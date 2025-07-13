@@ -19,7 +19,7 @@ To send messages you use:
 `ClientMessageManager.SendMessage(string name, byte[][] Params, int life = 5, byte targetId = 255)`  
 
 Where:  
-       - name is the name of the message used to identify its corresponding delegate.  
+       \t/t- name is the name of the message used to identify its corresponding delegate.  
        - Params is a 2d array of bytes to send as parameters to its delegate.  
               - Why bytes? The limmiting factor of this system as a whole is it has to send messages as a `fixedString64Bytes` which as a limit of 61 bytes (3 bytes are reserved by fixedString64Bytes for formatting) so each byte[] in Params can only be 61 bytes long, and while you can use strings using `Encoding.UTF8.GetBytes(string s)` it can be much more efficient and encouraged to make your own encoding and decoding functions for byte[]'s (examples included at the bottom.)  
        - life is how many network ticks to be broadcasting this message for, this is useful to ensure others can more reliably recieve this message due to the potential innacuracies of client network ticks, too little and clients might never see the message, but too high (like ~60) and clients might accidentally see the message twice, I found 3 - 10 to be a fairly consistent number, feel free to change this as needed.  
