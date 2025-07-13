@@ -20,7 +20,7 @@ To send messages you use:
 
 Where:  
        - name is the name of the message used to identify its corresponding delegate.  
-       - Params is a 2d array of bytes to send as parameters to its delegate. Note: Why bytes? The limmiting factor of this system as a whole is it has to send messages as a `fixedString64Bytes` which as a limit of 61 bytes (3 bytes are reserved by fixedString64Bytes for formatting) so each byte[] in Params can only be 61 bytes long, and while you can use strings using `Encoding.UTF8.GetBytes(string s)` it can be much more efficient and encouraged to make your own encoding and decoding functions for byte[]'s (examples included at the bottom.)  
+       - Params is a 2d array of bytes to send as parameters to its delegate. Note: Why bytes? The limiting factor of this system as a whole is it has to send messages as a `fixedString64Bytes` which as a limit of 61 bytes (3 bytes are reserved by fixedString64Bytes for formatting) so each byte[] in Params can only be 61 bytes long, and while you can use strings using `Encoding.UTF8.GetBytes(string s)` it can be much more efficient and encouraged to make your own encoding and decoding functions for byte[]'s (examples included at the bottom.)  
        - life is how many network ticks to be broadcasting this message for, this is useful to ensure others can more reliably recieve this message due to the potential innacuracies of client network ticks, too little and clients might never see the message, but too high (like ~60) and clients might accidentally see the message twice, I found 3 - 10 to be a fairly consistent number, feel free to change this as needed.  
        - targetId is the target clientId to recieve the message on (255 represents sending the message to ALL clients), this byte gets appended to the message name then examined by recieving clients to see if it applies to them, since its a byte it only supports values 0-255 where 0-254 represents specific client IDs and 255 represents all client IDs, while this means it only supports unique messaging for up to 254 NGOPlayer spawns I figured this was fairly unrealistic but I can make adjustments to support more if needed in the future.  
 
@@ -28,7 +28,8 @@ To set up a recieving delegate you use:
 `ClientMessageManager.RegisterMessageDelegate(string name, MessageDelegate del)`  
 Where:  
        - name is the name used to identify what messages should use this delegate. Note that message names can only be 58 bytes in length due to the fixedString64byte formatting and then 3 bytes used for encoding message life, a message ID, and recieving client IDs. You can check the byte length of the name with `Encoding.UTF8.GetByteCount(string s)` but this is already done internally and will throw an exception if a messages name exceeds the valid length.  
-       - del is the corresponding method to call when recieving a message from message name. MessageDelegate has the signature `public delegate void MessageDelegate(ulong id, byte[][] Params);` where id is the client ID of the client broadcasting the message and Params are the parameters sent with the message.  
+       - del is the corresponding method to call when recieving a message from message name. MessageDelegate has the signature  
+       `public delegate void MessageDelegate(ulong id, byte[][] Params);` where id is the client ID of the client broadcasting the message and Params are the parameters sent with the message.  
 
 ##Important notes
 A byte[] parameter filled with 255 (255 sixty one times) is invalid as it is used internally as a message terminator marking the end of a current messages parameters
