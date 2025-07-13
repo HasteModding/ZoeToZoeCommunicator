@@ -6,7 +6,7 @@ To the best of my ability and research I could not find a way to have two modded
 I couldnt think of too many use cases where this would be needed, because 90% of the time you need clients to message another it would likely cause desyncing where you'd need the server owner to be modded aswell, in which case you could use `[ServerRpc]`'s, `NetworkObjects`, or `NetworkManager.Singleton.CustomMessagingManager` to handle syncing clients and communicating events.
 That being said I had a use case with my Zoe recolor mod so maybe others might have uses for it aswell.
 
-##How To
+## How To
 
 To use this mod in your projects you need to add a reference to its mod folder in your mods .csproj like this:
 `<Reference Include="C:\Program Files (x86)\Steam\steamapps\workshop\content\1796470\TempModUploadFolder\*.dll" Private="false"/>` TODO: GET ACTUAL MOD FOLDER NUMBER WHEN UPLOADED
@@ -33,7 +33,7 @@ Where:
 ##Important notes
 A byte[] parameter filled with 255 (255 sixty one times) is invalid as it is used internally as a message terminator marking the end of a current messages parameters
 
-##Examples
+## Examples
 A simple example messanger using simple UTF8 Encoding and decoding
 ```
 using Landfall.Haste;
