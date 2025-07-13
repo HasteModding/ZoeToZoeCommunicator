@@ -9,7 +9,7 @@ That being said I had a use case with my Zoe recolor mod so maybe others might h
 ## How To
 
 To use this mod in your projects you need to add a reference to its mod folder in your mods .csproj like this:  
-`<Reference Include="C:\Program Files (x86)\Steam\steamapps\workshop\content\1796470\3525210141\*.dll" Private="false"/>` TODO: GET ACTUAL MOD FOLDER NUMBER WHEN UPLOADED  
+`<Reference Include="C:\Program Files (x86)\Steam\steamapps\workshop\content\1796470\3525210141\*.dll" Private="false"/>`  
 The path to your workshop folder might be different for you so you should verify its location before using, this is just where it is for me.  
 
 Then at the top of your mod you can include its namespace with the rest of your using like this:  
