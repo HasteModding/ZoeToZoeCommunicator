@@ -31,7 +31,7 @@ Where:
        - del is the corresponding method to call when recieving a message from message name. MessageDelegate has the signature  
        `public delegate void MessageDelegate(ulong id, byte[][] Params);` where id is the client ID of the client broadcasting the message and Params are the parameters sent with the message.  
 
-##Important notes
+## Important notes
 A byte[] parameter filled with 255 (255 sixty one times) is invalid as it is used internally as a message terminator marking the end of a current messages parameters
 
 ## Examples
