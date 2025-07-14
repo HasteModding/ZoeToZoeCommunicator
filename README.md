@@ -32,7 +32,8 @@ Where:
        `public delegate void MessageDelegate(ulong id, byte[][] Params);` where id is the client ID of the client broadcasting the message and Params are the parameters sent with the message.  
 
 ## Important notes
-A byte[] parameter filled with 255 (255 sixty one times) is invalid as it is used internally as a message terminator marking the end of a current messages parameters
+A byte[] parameter filled with 255 (255 sixty one times) is invalid as it is used internally as a message terminator marking the end of a current messages parameters  
+Additionally using Message names that match valid haste internal items will likely cause issues. (this is because I use the same network list to send messages that is used by the game to send what items each player has) 
 
 ## Examples
 A simple example messanger using simple UTF8 Encoding and decoding
